@@ -19,13 +19,17 @@
           <button
             ng-repeat="category in categories"
             class="category-button"
-            ng-click="filterByCategory(category)"
-            ng-class="{active: activeCat == category}">{{ category }}</button>
+            ng-class="{active: activeCat == category}"
+            ui-sref="showCat({cat: category})"
+            >{{ category }}</button>
           <loader ng-hide="flashCards"></loader>
-          <flash-card
+          
+          <ui-view></ui-view>
+
+          <!-- <flash-card
             ng-repeat="flashCard in flashCards | orderBy: 'question'"
-            card="flashCard"
-          ></flash-card>
+            card="flashCard">
+        </flash-card>
         </div>
         <div ng-controller="NewCardController">
           <form name="newCardForm">
@@ -47,7 +51,7 @@
             </p><span ng-show="newCardForm.answer3.$error.maxlength">Your answer is too long</span>
             <button type="submit" ng-show="newCardForm.$valid" ng-click="submit()">Shablam</button>
           </form>
-        </div>
+        </div> -->
       </div>
       <script src="angular.js"></script>
       <script src="app.js"></script>
@@ -60,5 +64,6 @@
       <script src="directives/loader/loader.directive.js"></script>
       <script src="directives/flashCard/flashCard.directive.js"></script>
       <script src="directives/borderOnHover/borderOnHover.directive.js"></script>
+      <script src="bower_components/ui-router/release/angular-ui-router.js"></script>
     </body>
 </html>

@@ -1,0 +1,19 @@
+<form name="newCardForm">
+            <input type="text" name="question" ng-model="newCard.question" ng-minlength="15" required><span ng-show="newCardForm.question.$error.required || newCardForm.question.$error.minlength">Your answer is too short</span>
+            <select name="categories" ng-model="newCard.category" required>
+              <option>MongoDB</option>
+              <option>Express</option>
+              <option>Angular</option>
+              <option>Node</option>
+            </select><span ng-show="newCardForm.categories.$error.required">You need to choose a category</span>
+            <p>
+              <input type="text" name="answer1" ng-model="newCard.answers[0].text" ng-maxlength="40"><input type="checkbox" ng-model="newCard.answers[0].correct">This is correct
+            </p><span ng-show="newCardForm.answer1.$error.maxlength">Your answer is too long</span>
+            <p>
+              <input type="text" name="answer2" ng-model="newCard.answers[1].text" ng-maxlength="40"><input type="checkbox" ng-model="newCard.answers[1].correct">This is correct
+            </p><span ng-show="newCardForm.answer2.$error.maxlength">Your answer is too long</span>
+            <p>
+              <input type="text" name="answer3" ng-model="newCard.answers[2].text" ng-maxlength="40"><input type="checkbox" ng-model="newCard.answers[2].correct">This is correct
+            </p><span ng-show="newCardForm.answer3.$error.maxlength">Your answer is too long</span>
+            <button type="submit" ng-show="newCardForm.$valid" ng-click="submit()">Shablam</button>
+        	</form>

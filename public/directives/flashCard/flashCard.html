@@ -2,7 +2,7 @@
   class="flash-card" 
   ng-controller="FlashCardCtrl"
   border-on-hover>
-    <h1>
+    <h1 ui-sref="oneCardState({id: theCard._id})">
       {{ theCard.question}}
     </h1>
 

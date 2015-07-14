@@ -1,4 +1,4 @@
-app.controller('MainCtrl', function ($scope, FlashCardFactory, $rootScope) {
+app.controller('MainCtrl', function ($scope, FlashCardFactory, $rootScope, $stateParams) {
     // make a query
     $scope.$on('newcard', function(event, data) {
       $scope.flashCards.push(data.card);
@@ -7,6 +7,7 @@ app.controller('MainCtrl', function ($scope, FlashCardFactory, $rootScope) {
     FlashCardFactory.getFlashCards()
     .then(function (cards) {
       $scope.flashCards = cards;
+      console.log(cards);
     })
     .catch(function (e) {
       console.log('e', e);
@@ -21,12 +22,4 @@ app.controller('MainCtrl', function ($scope, FlashCardFactory, $rootScope) {
 
     $scope.activeCat = null;
 
-    $scope.filterByCategory = function (cat) {
-      $scope.activeCat = cat;
-      $scope.flashCards = null;
-      FlashCardFactory.getFlashCards(cat)
-      .then(function (cards) {
-        $scope.flashCards = cards;
-      });
-    };
   })
